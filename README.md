@@ -10,7 +10,7 @@ cd path/nameproject
 pod install
 ```
 
-- You need to create a ClientId for the [Twitch API](https://dev.twitch.tv/docs/v5/guides/using-the-twitch-api#getting-a-client-id)
+- You need to create a Client ID for the [Twitch API](https://dev.twitch.tv/docs/v5/guides/using-the-twitch-api#getting-a-client-id)
 
 - Open nameproject.workspace
 
