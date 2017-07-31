@@ -11,9 +11,12 @@ import XCTest
 
 class TopGamesTests: XCTestCase {
     
+    var mainViewController: MainViewController!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mainViewController = MainViewController.instance()
+        mainViewController.preload()
     }
     
     override func tearDown() {
@@ -33,4 +36,8 @@ class TopGamesTests: XCTestCase {
         }
     }
     
+    func testNumberOfItemsInTheCollectionMustBeEqualToTheNumberOfItemsInTheArray() {
+        mainViewController.games = ["item 1", "item 2"]
+        XCTAssertEqual(mainViewController.collectionView?.numberOfItems(inSection: 0), 2, "numbers of items in collectionView should be equal to 2")
+    }
 }
