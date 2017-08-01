@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Eks-wz-hLG">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,17 +19,20 @@
                         <viewControllerLayoutGuide type="bottom" id="jg7-ih-4cA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="byq-QC-QEa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP 50 GAMES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3v-mf-t9o">
-                                <rect key="frame" x="20" y="305" width="335" height="57"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="47"/>
+                                <rect key="frame" x="60.666666666666657" y="343.66666666666669" width="293" height="49"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="86"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="41"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data provided by Twitch © 2017" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCt-Zr-rvG">
-                                <rect key="frame" x="16" y="598" width="343" height="49"/>
+                                <rect key="frame" x="20" y="690.66666666666652" width="374" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -41,8 +44,7 @@
                             <constraint firstItem="OCt-Zr-rvG" firstAttribute="leading" secondItem="byq-QC-QEa" secondAttribute="leadingMargin" id="BoM-z1-0aY"/>
                             <constraint firstItem="OCt-Zr-rvG" firstAttribute="trailing" secondItem="byq-QC-QEa" secondAttribute="trailingMargin" id="N8w-4v-MLL"/>
                             <constraint firstItem="v3v-mf-t9o" firstAttribute="centerX" secondItem="OCt-Zr-rvG" secondAttribute="centerX" id="TMf-Mj-xAn"/>
-                            <constraint firstItem="jg7-ih-4cA" firstAttribute="top" secondItem="OCt-Zr-rvG" secondAttribute="bottom" constant="20" id="jBb-9t-HFL"/>
-                            <constraint firstItem="OCt-Zr-rvG" firstAttribute="top" secondItem="v3v-mf-t9o" secondAttribute="bottom" constant="236.5" id="xif-2I-JkS"/>
+                            <constraint firstItem="jg7-ih-4cA" firstAttribute="top" secondItem="OCt-Zr-rvG" secondAttribute="bottom" constant="25" id="jBb-9t-HFL"/>
                         </constraints>
                     </view>
                 </viewController>

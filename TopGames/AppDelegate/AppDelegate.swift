@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = UIColor.mainColor()
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 

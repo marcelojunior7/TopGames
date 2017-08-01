@@ -10,6 +10,7 @@ target 'TopGames' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftyJSON'
+  pod 'KRPullLoader'
 
   target 'TopGamesTests' do
     inherit! :search_paths

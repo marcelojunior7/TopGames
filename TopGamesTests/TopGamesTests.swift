@@ -36,8 +36,28 @@ class TopGamesTests: XCTestCase {
         }
     }
     
+    func testCellIsReady() {
+        mainViewController.filteredGames = [Game()]
+        mainViewController.collectionView.reloadData()
+        let firstCell = mainViewController.collectionView(mainViewController.collectionView, cellForItemAt: IndexPath(item: 0, section: 0)) as? MainCollectionViewCell
+        XCTAssertNotNil(firstCell, "cell is invalid")
+    }
+    
     func testNumberOfItemsInTheCollectionMustBeEqualToTheNumberOfItemsInTheArray() {
-        mainViewController.games = ["item 1", "item 2"]
+        mainViewController.filteredGames = [Game(), Game()]
         XCTAssertEqual(mainViewController.collectionView?.numberOfItems(inSection: 0), 2, "numbers of items in collectionView should be equal to 2")
+    }
+    
+    func testDataAreRightsOnCollectionView() {
+        let game = Game()
+        game.name = "yolo"
+        game.thumbnail = "http://images.math.cnrs.fr/IMG/png/section8-image.png"
+        
+        mainViewController.filteredGames = [game, game]
+        mainViewController.collectionView.reloadData()
+        let firstCell = mainViewController.collectionView(mainViewController.collectionView, cellForItemAt: IndexPath(item: 0, section: 0)) as! MainCollectionViewCell
+        
+        XCTAssertEqual(firstCell.labelTitle.text, "yolo", "names is not equal of the model")
+        XCTAssertNotNil(firstCell.imageMain.image, "thumbnail is invalid")
     }
 }
