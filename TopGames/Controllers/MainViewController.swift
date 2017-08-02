@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import AlamofireImage
 import KRPullLoader
+import CoreData
+import Alamofire
 
 class MainViewController : UIViewController {
     
@@ -29,6 +31,7 @@ class MainViewController : UIViewController {
         super.viewDidLoad()
         setupUI()
         showSpinner()
+        fetchLocalGames()
         requestTop()
     }
     
@@ -38,13 +41,17 @@ class MainViewController : UIViewController {
         refreshView.delegate = self
         collectionView.addPullLoadableView(refreshView, type: .refresh)
     }
+    
+    func fetchLocalGames() {
+        self.games = DataManager.shared.loadData()
+        self.filter()
+    }
 
     //MARK: Service
     
     func requestTop(completionHandler:(()->Void)? = nil) {
-        twitchAPI.top(success: { (games) in
-            self.games = games
-            self.filter()
+        twitchAPI.top(success: {
+            self.fetchLocalGames()
             self.hideSpinner()
             completionHandler?()
         }) { (error) in
@@ -99,7 +106,7 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MainCollectionViewCell
         let game = filteredGames[indexPath.row]
         cell.labelTitle.text = game.name
-        if let url = URL(string: game.thumbnail) {
+        if let thumb = game.thumbnail, let url = URL(string: thumb) {
             cell.imageBackground.af_setImage(withURL:url, placeholderImage: UIImage.placeholder())
             cell.imageMain.af_setImage(withURL:url, placeholderImage: UIImage.placeholder())
         } else {
@@ -141,8 +148,9 @@ extension MainViewController : UISearchBarDelegate {
     func filter() {
         guard let searchText = searchBar.text else { return }
         filteredGames = searchText.isEmpty ? games : games.filter({(game: Game) -> Bool in
-            return game.name.range(of: searchText, options: .caseInsensitive) != nil
+            return game.name?.range(of: searchText, options: .caseInsensitive) != nil
         })
         collectionView.reloadData()
     }
 }
+

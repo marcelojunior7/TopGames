@@ -32,9 +32,9 @@ class DetailsViewController: UIViewController {
     
     func setupUI() {
         self.navigationItem.title = "Details"
-        labelViewers.text = "\(game?.viewers ?? 0) views"
-        labelChannels.text = "\(game?.channels ?? 0) channels"
-        labelTitle.text = game?.name
+        labelViewers.stroke(text: "\(game?.viewers ?? 0) views")
+        labelChannels.stroke(text: "\(game?.channels ?? 0) channels")
+        labelTitle.stroke(text: game?.name ?? "")
         if let url = URL(string: game?.thumbnail ?? "") {
             imageTopBackground.af_setImage(withURL:url, placeholderImage: UIImage.placeholder())
             imageTopCenter.af_setImage(withURL:url, placeholderImage: UIImage.placeholder())

@@ -32,24 +32,24 @@ class TopGamesTests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
+            
         }
     }
     
     func testCellIsReady() {
-        mainViewController.filteredGames = [Game()]
+        mainViewController.filteredGames = [Game.mock()]
         mainViewController.collectionView.reloadData()
         let firstCell = mainViewController.collectionView(mainViewController.collectionView, cellForItemAt: IndexPath(item: 0, section: 0)) as? MainCollectionViewCell
         XCTAssertNotNil(firstCell, "cell is invalid")
     }
     
     func testNumberOfItemsInTheCollectionMustBeEqualToTheNumberOfItemsInTheArray() {
-        mainViewController.filteredGames = [Game(), Game()]
+        mainViewController.filteredGames = [Game.mock(), Game.mock()]
         XCTAssertEqual(mainViewController.collectionView?.numberOfItems(inSection: 0), 2, "numbers of items in collectionView should be equal to 2")
     }
     
     func testDataAreRightsOnCollectionView() {
-        let game = Game()
+        let game = Game.mock()
         game.name = "yolo"
         game.thumbnail = "http://images.math.cnrs.fr/IMG/png/section8-image.png"
         

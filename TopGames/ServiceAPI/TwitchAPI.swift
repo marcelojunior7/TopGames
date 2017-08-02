@@ -23,17 +23,16 @@ struct TwitchAPIKeys {
 
 class TwitchAPI : NSObject {
     
-    func top(success:@escaping ((_ games:[Game]) -> Void), fail:@escaping ((_ error:Error?) -> Void)) {
+    func top(success:@escaping (() -> Void), fail:@escaping ((_ error:Error?) -> Void)) {
         
         Alamofire.request(TwitchAPIKeys.top50, parameters:nil, headers:TwitchAPIKeys.headers).validate().responseJSON { response in
             switch response.result {
             case .success:
-                var games = [Game]()
                 if let result = response.result.value {
                     let json = JSON(result)
-                    games = json["top"].arrayValue.map({Game(json: $0)})
+                    DataManager.shared.createData(json: json["top"].arrayValue )
                 }
-                success(games)
+                success()
             case .failure(let error):
                 print(error)
                 fail(error)
