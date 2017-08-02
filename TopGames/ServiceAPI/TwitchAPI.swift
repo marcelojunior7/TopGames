@@ -17,7 +17,7 @@ struct TwitchAPIKeys {
     static let top50 = baseURL + "/top?limit=50"
     static let headers: HTTPHeaders = [
         "Accept": "application/json",
-        "Client-ID": "cdvunutz7u00mxz9ndhz42btrdgld0"
+        "Client-ID": ""
     ]
 }
 
