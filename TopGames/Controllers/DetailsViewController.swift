@@ -43,5 +43,4 @@ class DetailsViewController: UIViewController {
             imageTopCenter.image = UIImage.placeholder()
         }
     }
-    
 }

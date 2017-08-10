@@ -80,7 +80,7 @@
                                                             <constraint firstItem="hmE-g5-oHL" firstAttribute="top" secondItem="Qvn-Au-oCk" secondAttribute="bottom" constant="3" id="nMa-rb-aDs"/>
                                                         </constraints>
                                                     </view>
-                                                    <blurEffect style="light"/>
+                                                    <blurEffect style="regular"/>
                                                 </visualEffectView>
                                             </subviews>
                                         </view>

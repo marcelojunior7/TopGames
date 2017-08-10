@@ -33,6 +33,7 @@ class MainViewController : UIViewController {
         showSpinner()
         fetchLocalGames()
         requestTop()
+        registerPeekAndPop()
     }
     
     func setupUI() {
@@ -45,6 +46,12 @@ class MainViewController : UIViewController {
     func fetchLocalGames() {
         self.games = DataManager.shared.loadData()
         self.filter()
+    }
+    
+    func registerPeekAndPop() {
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: collectionView)
+        }
     }
 
     //MARK: Service
@@ -153,4 +160,22 @@ extension MainViewController : UISearchBarDelegate {
         collectionView.reloadData()
     }
 }
+
+extension MainViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return nil}
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return nil }
+        
+        previewingContext.sourceRect = cell.frame
+        
+        let details = DetailsViewController.instance(game: filteredGames[indexPath.item])
+        
+        return details
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+}
+
 
